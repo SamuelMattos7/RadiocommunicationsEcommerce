@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Checkout</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                {%if request.user.is_authenticated %}
+                <div class="orders ">
+                    {%if request.user.perfil %}
+                        <h6>Pagina de Pago</h6>
+                        <p>Haga click en el boton de pago</p>
+                        <form method="post" action="{% url 'payment' %}">
+                            {% csrf_token %}
+                            <input class="btn btn-dark" type="submit" id="ButtonPago" value="Pagar">
+                        </form>
+                    {%else%}
+                        <p>Para comprar debe crear su perfil</p>
+                        <button class="btn btn-dark"><a style="text-decoration: none;" href="{% url 'CrearPerfil' %}">Crear Perfil</a></button>
+                    {%endif%}
+                    <script>
+                        function initiatePayment() {
+                            fetch("{% url 'payment' %}", {
+                                method: 'GET',
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.payment_url) {
+                                    window.location.href = data.payment_url;
+                                } else {
+                                    console.error('Error al obtener url de pago');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                        }
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var ButtonPago = document.getElementById('ButtonPago');
+                            if (ButtonPago) {
+                                ButtonPago.addEventListener('click', function(event) {
+                                    event.preventDefault(); 
+                                    initiatePayment();
+                                });
+                            }
+                        });
+                    </script>
+                    {% else %}
+                        <button class="btn btn-dark"><a style="text-decoration: none; color: white;" href="{% url 'login' %}">Login</a></button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="items">
+                    <div class="container p-2 col-lg-12 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Precio y Cantidad Total</h5>
+                                <br>
+                                Cantidad de productos:{{cantidad}}&nbsp;|&nbsp;Total de compra:{{total}}
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="container mt-2 col-xs-12">
+                        {% for A in items %}
+                            <div class="card mb-3 pt-2">
+                                <div class="row g-0">
+                                    <div class="col-md-3">
+                                        {% if A.Item.Imagen %}
+                                            <img src="{{ A.Item.Imagen.url }}" class="img-fluid rounded-start" alt="..." style="max-width: 100px; max-height: 100px;">
+                                        {% else %}
+                                            <img src="" alt="...">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ A.Item.Nombre }}</h5>
+                                            <p class="card-text small">Cantidad: {{ A.Cantidad }}&nbsp;|&nbsp;Precio: {{ A.Item.Precio }}&nbsp;|&nbsp;Total: {{ A.Total }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
+

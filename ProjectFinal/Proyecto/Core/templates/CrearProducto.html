@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+{% if user.userType == 'ADMINISTRADOR' %}
+    <div class="container mt-5 p-5">
+        <h4>CREAR PRODUCTO</h4>
+        <hr>
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="{{ form.Nombre.id }}">Nombre:</label>
+                {{ form.Nombre }}
+                <label for="{{ form.Cantidad.id }}">Cantidad:</label>
+                {{ form.Cantidad }}
+                <label for="{{ form.Codigos.id }}">Codigos:</label>
+                {{ form.Codigos }}
+                <label for="{{ form.Tipo.id }}">Tipo:</label>
+                {{ form.Tipo }}
+                <label for="{{ form.Marca.id }}">Marca:</label>
+                {{ form.Marca }}
+                <label for="{{ form.Precio.id }}">Precio:</label>
+                {{ form.Precio }}
+
+                <input type="submit" value="Agregar Producto">
+            </form>
+        </div>
+    </div>
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %} 
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %}
+</body>
+</html>

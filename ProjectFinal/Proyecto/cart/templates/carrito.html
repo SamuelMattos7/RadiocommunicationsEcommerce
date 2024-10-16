@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Carrito</title>
+</head>
+<body>
+    <div class=" container mt-4 p-2">
+        <div class="card">
+            <div class="card-body">
+                <h5>Precio y Cantidad Total</h5>
+                <br>
+                Cantidad de productos:{{cantidad}}&nbsp;|&nbsp;Total de compra:{{total}}
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 p-2">
+        {% for A in items%}
+            <div class="card mb-3">
+                <div class="row g-0">
+                <div class="col-md-3">
+                    {% if A.Item.Imagen %}
+                        <img src="{{ A.Item.Imagen.url }}" class="img-fluid rounded-start" alt="..." style="max-width: 150px; max-height: 140px;">
+                    {%else%}
+                        <img src="" alt="...">
+                    {%endif%}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{A.Item.Nombre}}</h5>
+                        <p class="CyP">Cantidad: {{A.Cantidad}}&nbsp;|&nbsp;Precio: {{A.Item.Precio}}&nbsp;|&nbsp;Total: {{A.Total}}</p>
+                        <div class="d-flex gap-2">
+                            <form action="{% url 'quit-carrito'  A.Item.ProductID%}" method="post">{% csrf_token %}<button class="remove-from-cart-btn btn btn-dark X" type="submit">Remove</button></form>
+                            <form action="{% url 'AddCartItem'  A.Item.ProductID%}" method="post">{% csrf_token %}<button class="remove-from-cart-btn btn btn-primary X" type="submit">+</button></form>
+                            <form action="{% url 'RestCartItem'  A.Item.ProductID%}" method="post">{% csrf_token %}<button class="remove-from-cart-btn btn btn-danger X" type="submit">-</button></form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {%endfor%}
+        {%if user.is_authenticated %}
+            <button class="btn btn-sm btn-dark"><a style="text-decoration: none; color: white;" href="{% url 'crear_orders'%}">Pagar y Crear orden</a></button>
+        {%else%}
+            <button class="btn btn-sm btn-dark"><a style="text-decoration: none; color: white;" href="{% url 'login'%}">login</a></button>
+        {%endif%}
+    </div>
+</body>
+</html>

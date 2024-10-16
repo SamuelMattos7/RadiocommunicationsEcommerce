@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Hola estimado {{ user.username }},
+
+¡Felicidades! Tu cuenta ha sido creada con éxito. Para empezar a disfrutar de nuestros servicios, por favor haz clic en el enlace de activación. 
+Una vez activada, estarás listo para comenzar. ¡Bienvenido a nuestra comunidad!
+
+http://{{ domain }}{% url 'activar' uidb64=uid token=token%}
+
+{% endautoescape %}
