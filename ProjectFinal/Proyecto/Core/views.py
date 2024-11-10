@@ -8,6 +8,9 @@ from django.shortcuts import redirect
 from cart.models import Carrito, CartItems
 from django.contrib.auth.decorators import login_required
 from users.models import Usuario
+from django_filters.views import FilterView
+from .models import Producto
+from .filters import ProductFilter
 
 # Create your views here.
 def Home(request): 
@@ -118,3 +121,9 @@ def Quit_Carrito(request, ProductID):
     except CartItems.DoesNotExist:
         pass
     return redirect('carrito')
+
+class ListaProductosView(FilterView):
+    model = Producto
+    template_name = 'tienda/lista_products.html'
+    filterset_class = ProductFilter
+    context_object_name = 'productos'

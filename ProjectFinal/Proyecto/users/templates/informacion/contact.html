@@ -135,16 +135,15 @@
         </div>
     </div>
 
-
-    <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
+            <form class="col-md-9 m-auto" method="post" action="{% url 'contact' %}" role="form">
+                {% csrf_token %}
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputname">Nombre</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
-                    </div>
+                        <input type="text" class="form-control mt-1" id="nombre" name="nombre" placeholder="Nombre">
+                    </div> 
                     <div class="form-group col-md-6 mb-3">
                         <label for="inputemail">Email</label>
                         <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
@@ -152,12 +151,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="inputsubject">Asunto</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
+                    <input type="text" class="form-control mt-1" id="asunto" name="asunto" placeholder="Subject">
                 </div>
                 <div class="mb-3">
                     <label for="inputmessage">Mensaje</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Message"
-                        rows="8"></textarea>
+                    <textarea class="form-control mt-1" id="mensaje" name="mensaje" placeholder="Message" rows="8"></textarea>
                 </div>
                 <div class="row">
                     <div class="col text-end mt-2">

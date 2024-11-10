@@ -1,0 +1,14 @@
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Filtrar</button>
+</form>
+
+<ul>
+    {% for producto in productos %}
+        <li>{{ producto.Nombre }} - {{ producto.Marca }} - {{ producto.Precio }} - {{ producto.Tipo.TipoProducto }} / <a href="{% url 'VisualizarProducto' producto.ProductID %}">link</a>
+                                                                                                                    
+        </li>
+    {% empty %}
+        <li>No products found.</li>
+    {% endfor %}
+</ul>

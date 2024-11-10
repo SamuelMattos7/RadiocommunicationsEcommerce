@@ -12,3 +12,4 @@ class Orders(models.Model):
     MetodoPago = models.CharField(verbose_name='MetodoPago', default='PayPal', max_length=30)
     Items = models.ManyToManyField(CartItems)
     PrecioTotal = models.IntegerField(verbose_name="Precio Compra")
+    FechaCompra = models.DateTimeField(verbose_name="Fecha de compra", auto_now_add=True)

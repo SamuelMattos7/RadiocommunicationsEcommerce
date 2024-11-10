@@ -11,7 +11,7 @@ class ProductCreateForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('Nombre', 'Cantidad', 'Codigos', 'Imagen', 'Tipo',  'Marca', 'Precio')
+        fields = ('Nombre', 'Cantidad', 'Codigos', 'Imagen', 'Tipo',  'Marca', 'Imagen', 'Precio')
 
     widgets = {
         'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
@@ -20,6 +20,7 @@ class ProductCreateForm(forms.ModelForm):
         'Tipo': forms.Select(attrs={'class': 'form-control'}),
         'Marca': forms.TextInput(attrs={'class': 'form-control'}),
         'Precio': forms.TextInput(attrs={'class': 'form-control'}),
+        'Imagen': forms.TextInput(attrs={'class': 'form-control'}),
     }
 
     Cantidad = forms.IntegerField(validators=[SoloNumerosValidator()])

@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
+from .views import ListaProductosView
 
 urlpatterns = [
     path('', views.Home, name='home'),
     path('Catalogo/', views.Tienda, name='Catalogo'),
+    path('SearchProductos/', ListaProductosView.as_view(), name='SearchProductos'),
     path('add-carrito/<int:ProductID>/', views.Add_Carrito, name='add-carrito'),
     path('VisualizarProducto/<int:ProductID>/', views.ProductoPagina, name='VisualizarProducto'),
     path('quit-carrito/<int:ProductID>/', views.Quit_Carrito, name='quit-carrito'),

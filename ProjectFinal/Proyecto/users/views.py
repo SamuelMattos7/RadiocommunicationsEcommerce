@@ -12,6 +12,15 @@ from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from orders.models import Orders
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from django.utils.timezone import now
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from django.core.mail import send_mail
 # Create your views here.
 
 @login_required
@@ -165,6 +174,54 @@ def aboutus(request):
     return render(request, 'informacion/aboutus.html')
 
 def contact(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        email = request.POST.get('email')
+        asunto = request.POST.get('asunto')
+        mensaje = request.POST.get('mensaje')
+
+        Mensaje_Completo  = f"Nombre: {nombre}\nCorreo: {email}\n\nMensaje:\n{mensaje}"
+
+        send_mail(
+            subject=asunto,
+            message=Mensaje_Completo,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=['reidiosolutions@gmail.com'],  
+            fail_silently=False,
+        )
+
+        return HttpResponse("Mensaje enviado exitosamente.")
+
     return render (request, 'informacion/contact.html')
     
-            
+def analizar_Orders():
+    
+    orders_data = Orders.objects.all().values('OrderID', 'Direccion', 'MetodoPago', 'PrecioTotal', 'FechaCompra')
+
+    df = pd.DataFrame(list(orders_data))
+
+    df['FechaCompra'] = pd.to_datetime(df['FechaCompra'])
+
+    df.set_index('FechaCompra', inplace=True)
+
+    orders_Mes = df.resample('M').sum()
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(orders_Mes.index, orders_Mes['PrecioTotal'], marker='o', linestyle='-', color='b')
+    plt.title('Mes Pedidos Total')
+    plt.xlabel('Mes')
+    plt.ylabel('Precio Total')
+    plt.grid(True)
+
+    image_path = os.path.join(settings.MEDIA_ROOT, 'PedidosPorMesPlot.png')
+    plt.savefig(image_path)
+    plt.close()
+
+    return 'PedidosPorMesPlot.png'
+
+def PedidosMensuales(request):
+
+    imagen = analizar_Orders()
+    url_imagen = f'/media/{imagen}'
+
+    return render(request, 'administrador/AdminPedidosMensuales.html', {'image_url':url_imagen})
