@@ -225,3 +225,35 @@ def PedidosMensuales(request):
     url_imagen = f'/media/{imagen}'
 
     return render(request, 'administrador/AdminPedidosMensuales.html', {'image_url':url_imagen})
+
+def ventas_by_productos_graph():
+
+    data_orders = Orders.objects.all().values(
+        'Items__Item__Nombre', 
+        'Items__Cantidad',
+        'Items__Item_Precio'
+    )
+
+    df = pd.DataFrame(list(data_orders))
+
+    df['Venta_total'] = df['Items__Cantidad'] * df['Items__Item__Precio']
+    ventas_by_productos = df.groupby('Items__Item__Nombre')['Venta_total'].sum().sort_values(ascending=False)
+
+    plt.figure(figsize=(12,8))
+    ventas_by_productos.plot(kind='bar', color='skyblue')
+    plt.title('Ventas por Productos')
+    plt.xlabel('Productos')
+    plt.ylabel('Ventas Totales')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+
+    image_path = os.path.join(settings.MEDIA_ROOT, 'ventas_by_productos_graph.png')
+    plt.savefig(image_path)
+    plt.close()  
+    
+    return 'ventas_by_productos_graph.png'
+
+def ventas_by_productos_view(request):
+    image = ventas_by_productos_graph()
+    img_url = f'/media/{image}'
+    return render(request, 'ventas_por_producto.html', {'img_url':img_url})
