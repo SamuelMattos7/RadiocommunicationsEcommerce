@@ -140,33 +140,38 @@
     </div>
 
     <!-- Product Catalog -->
-    <div class="fila">
-        <div class="carta mt-3">
+    <div class="container mt-5">
+        <div class="row">
             {% for producto in Productos %}
-            <div class="contenedor">
-                {% if producto.Imagen %}
-                <img src="{{ producto.Imagen.url }}">
-                {% else %}
-                <img src="" alt="...">
-                {% endif %}
-                <div class="d-flex justify-content-center gap-2">
-                    <strong><h6>{{ producto.Nombre }}</h6></strong>
-                    <strong>${{ producto.Precio }}</strong>
-                </div>
-                <div class="d-flex justify-content-center gap-2">
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'add-carrito' producto.ProductID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="custom-button btn btn-sm btn-primary">Añadir al carrito</button>
-                    </form>
-                    {% else %}
-                    <button class="custom-button btn btn-sm btn-primary"><a href="{% url 'login' %}" style="text-decoration: none; color: white;">Añadir al carrito</a></button>
-                    {% endif %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center">
+                    <div class="contenedor">
+                        {% if producto.Imagen %}
+                        <img src="{{ producto.Imagen.url }}" class="card-img-top" alt="{{ producto.Nombre }}">
+                        {% else %}
+                        <img src="" alt="No Image" class="card-img-top">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.Nombre }}</h5>
+                            <p class="card-text">${{ producto.Precio }}</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-auto">
+                            {% if user.is_authenticated %}
+                            <form action="{% url 'add-carrito' producto.ProductID %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                            </form>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-primary text-white">Añadir al carrito</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
+    
 
     <!-- Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
