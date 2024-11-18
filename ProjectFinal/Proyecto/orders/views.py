@@ -7,6 +7,8 @@ import paypalrestsdk
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 paypalrestsdk.configure({
@@ -120,6 +122,21 @@ def confirmar_order(request):
             for cart_item in items:
                 order.Items.add(cart_item)
             print('Orden Creada')
+
+            subject = 'Creacion de pedido'
+            message = f'Querido {request.user.username}, \n\nTu pedido se a realizado correctamente. \n\nDetalles de pedido:'
+            for item in items:
+                message+= f'{item.Item.Nombre} - Cantidad: {item.Cantidad} - Precio: {item.Item.Precio}\n'
+            message+= f'n\Precio Total: ${carrito.PrecioTotal()}\n\nGracias por su compra!'
+            recipient = request.user.email
+
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [recipient],
+                fail_silently=False,
+            )
     else:
         print(form.errors)
 

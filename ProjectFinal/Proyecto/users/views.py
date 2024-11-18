@@ -33,7 +33,7 @@ def Users(request):
 def Registro(request):
 
     if request.user.is_authenticated:
-        return redirect('users')
+        return redirect('perfil')
      
     if request.method == 'POST':
 
