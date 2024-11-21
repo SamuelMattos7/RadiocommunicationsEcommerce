@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .btn-download {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn-download:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download Orders</h1>
+        <p>Click the button below to download all the orders in a CSV file.</p>
+        <form method="POST" action="{% url 'download_orders' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-download">Download CSV</button>
+        </form>
+    </div>
+
+    <iframe title="Ventas por mes" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMTgxYjJlNmQtMmI3Ny00OGNjLWJmZGEtZDY3NmNiMGJhY2Y0IiwidCI6IjM4YTFlMGExLWI2YjEtNDJlOS1iM2E5LTU5NzYyNjY3MGIxNyIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+</body>
+</html>

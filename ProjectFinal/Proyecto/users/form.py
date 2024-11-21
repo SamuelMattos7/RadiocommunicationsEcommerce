@@ -154,6 +154,13 @@ class PerfilEditarForm(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Direccion']
+        labels = {
+            'Nombre': 'Nombre',
+            'Apellido': 'Apellidos',
+            'afiliacion': 'Afiliación',
+            'Telefono': 'Número de Teléfono',
+            'Direccion': 'Dirección',
+        }
 
     widgets = {
         'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
@@ -172,20 +179,3 @@ class PerfilEditarForm(forms.ModelForm):
         
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs['class'] = 'form-control col-8'
-
-'''
-class ContactForm(forms.ModelForm):
-
-    class Meta: 
-        model = Perfil
-        fields = ['Nombre', 'Email', 'Asunto', 'Mensaje']
-
-    widgets = {
-        'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
-        'Email': forms.TextInput(attrs={'class': 'form-control'}),
-        'Asunto': forms.TextInput(attrs={'class': 'form-control'}),
-        'Mensaje': forms.TextInput(attrs={'class': 'form-control'}),
-    }
-
-    Nombre = forms.CharField(validators=[SoloLetrasValidator()])
-'''

@@ -14,6 +14,8 @@ from django.urls import reverse
 from orders.models import Orders
 import pandas as pd
 import matplotlib
+import matplotlib.dates as mdates
+import csv
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from django.utils.timezone import now
@@ -21,6 +23,10 @@ import os
 from django.conf import settings
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from datetime import datetime, timedelta
+from django.core.files.base import ContentFile
+from io import BytesIO
+
 # Create your views here.
 
 @login_required
@@ -168,7 +174,7 @@ def editarPerfil(request):
     else:
         form = PerfilEditarForm(instance=perfil)
 
-    return render(request, 'perfil/EditarPerfil.html', {'form':form}),
+    return render(request, 'perfil/EditarPerfil.html', {'form':form})
 
 def aboutus(request):
     return render(request, 'informacion/aboutus.html')
@@ -193,67 +199,26 @@ def contact(request):
         return HttpResponse("Mensaje enviado exitosamente.")
 
     return render (request, 'informacion/contact.html')
-    
-def analizar_Orders():
-    
-    orders_data = Orders.objects.all().values('OrderID', 'Direccion', 'MetodoPago', 'PrecioTotal', 'FechaCompra')
 
-    df = pd.DataFrame(list(orders_data))
+def download_orders(request):
+    if request.method == 'POST':
+        # Fetch the data from the Orders model
+        orders = Orders.objects.all().values('OrderID', 'User', 'User_email', 'Direccion', 'MetodoPago', 'PrecioTotal', 'FechaCompra')
 
-    df['FechaCompra'] = pd.to_datetime(df['FechaCompra'])
+        # Create a DataFrame from the query set
+        df = pd.DataFrame(list(orders))
 
-    df.set_index('FechaCompra', inplace=True)
+        # Prepare the response as CSV
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=orders.csv'
+        
+        # Convert DataFrame to CSV and write to the response with a semicolon delimiter
+        df.to_csv(path_or_buf=response, sep=';', index=False)
+        
+        return response
 
-    orders_Mes = df.resample('M').sum()
+    return render(request, 'administrador/download_orders.html')
 
-    plt.figure(figsize=(10, 6))
-    plt.plot(orders_Mes.index, orders_Mes['PrecioTotal'], marker='o', linestyle='-', color='b')
-    plt.title('Mes Pedidos Total')
-    plt.xlabel('Mes')
-    plt.ylabel('Precio Total')
-    plt.grid(True)
 
-    image_path = os.path.join(settings.MEDIA_ROOT, 'PedidosPorMesPlot.png')
-    plt.savefig(image_path)
-    plt.close()
 
-    return 'PedidosPorMesPlot.png'
 
-def PedidosMensuales(request):
-
-    imagen = analizar_Orders()
-    url_imagen = f'/media/{imagen}'
-
-    return render(request, 'administrador/AdminPedidosMensuales.html', {'image_url':url_imagen})
-
-def ventas_by_productos_graph():
-
-    data_orders = Orders.objects.all().values(
-        'Items__Item__Nombre', 
-        'Items__Cantidad',
-        'Items__Item_Precio'
-    )
-
-    df = pd.DataFrame(list(data_orders))
-
-    df['Venta_total'] = df['Items__Cantidad'] * df['Items__Item__Precio']
-    ventas_by_productos = df.groupby('Items__Item__Nombre')['Venta_total'].sum().sort_values(ascending=False)
-
-    plt.figure(figsize=(12,8))
-    ventas_by_productos.plot(kind='bar', color='skyblue')
-    plt.title('Ventas por Productos')
-    plt.xlabel('Productos')
-    plt.ylabel('Ventas Totales')
-    plt.xticks(rotation=45, ha='right')
-    plt.tight_layout()
-
-    image_path = os.path.join(settings.MEDIA_ROOT, 'ventas_by_productos_graph.png')
-    plt.savefig(image_path)
-    plt.close()  
-    
-    return 'ventas_by_productos_graph.png'
-
-def ventas_by_productos_view(request):
-    image = ventas_by_productos_graph()
-    img_url = f'/media/{image}'
-    return render(request, 'ventas_por_producto.html', {'img_url':img_url})

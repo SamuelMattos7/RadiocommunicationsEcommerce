@@ -31,7 +31,7 @@ urlpatterns = [
     path('AdminOrderList/', views.ver_orders, name='AdminOrderList'),
     path('EliminarUser/<int:id>/', views.DeleteUsers, name='EliminarUser'),
     path('ActualizarUser/<int:id>/', views.UpdateUser,name='ActualizarUser'),
-    path('PedidosMensualesAdmin/', views.PedidosMensuales, name='PedidosMensualesAdmin'),
+    path('download_orders/', views.download_orders, name='download_orders'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('contact/', views.contact, name='contact')
 ]
