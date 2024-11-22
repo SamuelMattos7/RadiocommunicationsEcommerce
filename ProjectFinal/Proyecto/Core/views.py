@@ -11,6 +11,8 @@ from users.models import Usuario
 from django_filters.views import FilterView
 from .models import Producto
 from .filters import ProductFilter
+from django.http import Http404, FileResponse
+import os
 
 # Create your views here.
 def Home(request): 
@@ -47,12 +49,10 @@ def CrearProduct(request):
     return render(request, 'CrearProducto.html', {'form':form})
         
 def UpdateProducto(request, id):
-    
-    instance = get_object_or_404(Producto, ProductID = id)
+    instance = get_object_or_404(Producto, ProductID=id)
 
     if request.method == 'POST':
-        
-        form = ProductUpdateForm(request.POST, instance=instance)
+        form = ProductUpdateForm(request.POST, request.FILES, instance=instance)
 
         if form.is_valid():
             form.save()
@@ -60,7 +60,7 @@ def UpdateProducto(request, id):
     else:
         form = ProductUpdateForm(instance=instance)
 
-    return render(request, 'UpdateProductos.html', {'form':form})
+    return render(request, 'UpdateProductos.html', {'form': form})
 
 def DeleteProducto(request, id):
 
@@ -127,3 +127,17 @@ class ListaProductosView(FilterView):
     template_name = 'tienda/lista_products.html'
     filterset_class = ProductFilter
     context_object_name = 'productos'
+
+def download_pdf(request, product_id):
+    product = get_object_or_404(Producto, ProductID=product_id)
+
+    if not product.pdf_file:
+        raise Http404('No hay un archivo asociado con este producto')
+    
+    file_path = product.pdf_file.path
+
+    if not os.path.exists(file_path):
+        raise Http404('Archivo no encontrado')
+    
+    response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename=os.path.basename(file_path))
+    return response

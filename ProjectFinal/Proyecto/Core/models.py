@@ -85,6 +85,10 @@ class Producto(models.Model):
     )
     Marca = models.CharField(verbose_name="Marca del producto", max_length=60)
     Imagen = models.ImageField(null=True, blank=True, upload_to="imagenes/")
+    pdf_file = models.FileField(
+        upload_to='productos/excel/', null=True, blank=True, 
+        verbose_name="Archivo Excel"
+    )
     Precio = models.FloatField(verbose_name='Precio', null=False)
     Creado_el = models.DateTimeField(verbose_name='Fecha de creacion', auto_now_add=True)
     Modificado_el = models.DateTimeField(verbose_name='Fecha de Modificacion', auto_now_add=True)

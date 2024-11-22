@@ -12,5 +12,6 @@ urlpatterns = [
     path('AdminProductList', views.VerProduct, name='AdminProductList'),
     path('CrearProduct/', views.CrearProduct, name='CrearProduct'),
     path('ActulizarProduct/<int:id>/', views.UpdateProducto, name='ActulizarProduct'),
-    path('EliminarProduct/<int:id>/', views.DeleteProducto, name='EliminarProduct'),    
+    path('EliminarProduct/<int:id>/', views.DeleteProducto, name='EliminarProduct'), 
+    path('download_pdf/<int:product_id>/', views.download_pdf, name='download_pdf'),
 ]

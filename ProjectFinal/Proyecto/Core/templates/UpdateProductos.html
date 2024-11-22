@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <h4>MODIFICAR PRODUCTO</h4>
                     <hr>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form.as_p}}
                         <input type="submit" name="Agregar Producto">

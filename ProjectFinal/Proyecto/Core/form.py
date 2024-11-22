@@ -11,17 +11,17 @@ class ProductCreateForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('Nombre', 'Cantidad', 'Codigos', 'Imagen', 'Tipo',  'Marca', 'Imagen', 'Precio')
-
-    widgets = {
-        'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
-        'Cantidad': forms.TextInput(attrs={'class': 'form-control'}),
-        'Codigos': forms.Select(attrs={'class': 'form-control'}),
-        'Tipo': forms.Select(attrs={'class': 'form-control'}),
-        'Marca': forms.TextInput(attrs={'class': 'form-control'}),
-        'Precio': forms.TextInput(attrs={'class': 'form-control'}),
-        'Imagen': forms.TextInput(attrs={'class': 'form-control'}),
-    }
+        fields = ('Nombre', 'Cantidad', 'Codigos', 'Imagen', 'Tipo',  'Marca', 'Precio', 'pdf_file')
+        widgets = {
+            'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'Cantidad': forms.TextInput(attrs={'class': 'form-control'}),
+            'Codigos': forms.Select(attrs={'class': 'form-control'}),
+            'Tipo': forms.Select(attrs={'class': 'form-control'}),
+            'Marca': forms.TextInput(attrs={'class': 'form-control'}),
+            'Precio': forms.TextInput(attrs={'class': 'form-control'}),
+            'Imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'pdf_file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
 
     Cantidad = forms.IntegerField(validators=[SoloNumerosValidator()])
     Precio = forms.IntegerField(validators=[SoloNumerosValidator()])
@@ -36,17 +36,17 @@ class ProductUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Producto
-        fields = ['Nombre', 'Cantidad', 'Codigos', 'Tipo',  'Marca', 'Precio', 'Imagen']
-    
-    widgets = {
-        'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
-        'Cantidad': forms.TextInput(attrs={'class': 'form-control'}),
-        'Codigos': forms.TextInput(attrs={'class': 'form-control'}),
-        'Tipo': forms.TextInput(attrs={'class': 'form-control'}),
-        'Marca': forms.TextInput(attrs={'class': 'form-control'}),
-        'Precio': forms.TextInput(attrs={'class': 'form-control'}),
-        'Imagen': forms.TextInput(attrs={'class': 'form-control'}),
-    }
+        fields = ['Nombre', 'Cantidad', 'Codigos', 'Tipo', 'Marca', 'Precio', 'Imagen', 'pdf_file']
+        widgets = {
+            'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'Cantidad': forms.TextInput(attrs={'class': 'form-control'}),
+            'Codigos': forms.TextInput(attrs={'class': 'form-control'}),
+            'Tipo': forms.TextInput(attrs={'class': 'form-control'}),
+            'Marca': forms.TextInput(attrs={'class': 'form-control'}),
+            'Precio': forms.TextInput(attrs={'class': 'form-control'}),
+            'Imagen': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'pdf_file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super(ProductUpdateForm, self).__init__(*args, **kwargs)
