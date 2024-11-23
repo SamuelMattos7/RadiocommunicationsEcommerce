@@ -129,13 +129,14 @@ class PerfilCreacionForm(forms.ModelForm):
     
     class Meta:
         model = Perfil
-        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Direccion']
+        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Region' , 'Direccion']
 
     widgets = {
         'Nombre': forms.TextInput(attrs={'class': 'form-control'}),
         'Apellido': forms.TextInput(attrs={'class': 'form-control'}),
         'afiliacion': forms.TextInput(attrs={'class': 'form-control'}),
         'Telefono': forms.TextInput(attrs={'class': 'form-control'}),
+        'Region': forms.TextInput(attrs={'class': 'form-control'}),
         'Direccion': forms.TextInput(attrs={'class': 'form-control'}),
     }
 
@@ -153,7 +154,7 @@ class PerfilEditarForm(forms.ModelForm):
     
     class Meta:
         model = Perfil
-        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Direccion']
+        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Region' ,'Direccion']
         labels = {
             'Nombre': 'Nombre',
             'Apellido': 'Apellidos',
@@ -167,6 +168,7 @@ class PerfilEditarForm(forms.ModelForm):
         'Apellido': forms.TextInput(attrs={'class': 'form-control'}),
         'afiliacion': forms.TextInput(attrs={'class': 'form-control'}),
         'Telefono': forms.TextInput(attrs={'class': 'form-control'}),
+        'Region': forms.TextInput(attrs={'class': 'form-control'}),
         'Direccion': forms.TextInput(attrs={'class': 'form-control'}),
     }
 
