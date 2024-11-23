@@ -25,7 +25,7 @@ urlpatterns = [
         name='password_reset_confirmacion'),
     path('ResetPassword/Mail_Reset_Password/', TemplateView.as_view(template_name='usuario/reset_situacion.html'), name='password_reset_exito'),
     path('password_reset_confirmacion/MQ/Password_Reset_Completado/', TemplateView.as_view(template_name='usuario/reset_situacion.html'), name='password_reset_finalizado'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/users/login/'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(http_method_names=['get', 'post'], next_page='/users/login/'), name='logout'),
     path('AdminPanel/', views.Admins, name='AdminPanel'),
     path('AdminUserList/', views.ListaUsers, name='AdminUserList'),
     path('AdminOrderList/', views.ver_orders, name='AdminOrderList'),

@@ -120,7 +120,7 @@
                                     <h6 class="mb-0">Empresa</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{perfil.afiliacion}}
+                                    {{perfil.Empresa}}
                                 </div>
                             </div>
                             <hr>
@@ -160,8 +160,11 @@
 
                             </script>
     </body>
-    <a href="{% url 'EditarPerfil' %}">Editar perfil</a> |
-    <a href="{%url 'logout' %}">Cerrar Sesión</a>
+    <button class="btn btn-primary"><a href="{% url 'EditarPerfil' %}">Editar perfil</a></button> |
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Logout</button>
+    </form>
 </body>
 
 </html>

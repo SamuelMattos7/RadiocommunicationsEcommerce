@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <h1>Download Orders</h1>
-        <p>Click the button below to download all the orders in a CSV file.</p>
+        <p style="text-align: center;">Presione el boton para descargar el archivo cvs para el analisis de datos</p>
         <form method="POST" action="{% url 'download_orders' %}">
             {% csrf_token %}
             <button type="submit" class="btn-download">Download CSV</button>

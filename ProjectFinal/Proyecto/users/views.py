@@ -80,7 +80,7 @@ def Activacion_Cuenta(request, uidb64, token):
         user.is_active =True
         user.save()
         login(request, user)
-        return redirect('users')
+        return redirect('users/login')
     else:
         return render(request, 'Activacion_Cuenta_Invalida.html')
 
@@ -202,23 +202,48 @@ def contact(request):
 
 def download_orders(request):
     if request.method == 'POST':
-        # Fetch the data from the Orders model
-        orders = Orders.objects.all().values('OrderID', 'User', 'User_email', 'Direccion', 'MetodoPago', 'PrecioTotal', 'FechaCompra')
+        # Fetch all orders
+        orders = Orders.objects.all()
+        order_data = []
 
-        # Create a DataFrame from the query set
-        df = pd.DataFrame(list(orders))
+        # Loop through each order to extract necessary information
+        for order in orders:
+            # Get related CartItems for this order
+            cart_items = order.Items.all()
+            items_detail = []
+
+            # Collect item details (e.g., Product Name and Quantity)
+            for item in cart_items:
+                items_detail.append(f"{item.Item.Nombre} (Quantity: {item.Cantidad})")
+
+            # Join the item details as a single string for CSV output
+            items_string = "; ".join(items_detail)
+
+            # Append the order's data including item details
+            order_data.append({
+                'OrderID': order.OrderID,
+                'User': order.User.username,  # or another User field you want to display
+                'User_email': order.User_email,
+                'User_region': order.User_region,
+                'Direccion': order.Direccion,
+                'MetodoPago': order.MetodoPago,
+                'Items': items_string,  # Add the items detail here
+                'PrecioTotal': order.PrecioTotal,
+                'FechaCompra': order.FechaCompra.strftime('%Y-%m-%d %H:%M:%S')
+            })
+
+        # Create a DataFrame from the data list
+        df = pd.DataFrame(order_data)
 
         # Prepare the response as CSV
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=orders.csv'
-        
+
         # Convert DataFrame to CSV and write to the response with a semicolon delimiter
         df.to_csv(path_or_buf=response, sep=';', index=False)
         
         return response
 
     return render(request, 'administrador/download_orders.html')
-
-
 
 
