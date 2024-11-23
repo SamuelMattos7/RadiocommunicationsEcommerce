@@ -154,11 +154,11 @@ class PerfilEditarForm(forms.ModelForm):
     
     class Meta:
         model = Perfil
-        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Region' ,'Direccion']
+        fields = ['Nombre', 'Apellido', 'afiliacion', 'Telefono', 'Direccion']
         labels = {
             'Nombre': 'Nombre',
             'Apellido': 'Apellidos',
-            'afiliacion': 'Afiliación',
+            'afiliacion': 'afiliacion',
             'Telefono': 'Número de Teléfono',
             'Direccion': 'Dirección',
         }
