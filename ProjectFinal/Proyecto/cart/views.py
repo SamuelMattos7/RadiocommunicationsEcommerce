@@ -31,14 +31,20 @@ def add(request, ProductID):
     
 def rest(request, ProductID):
     cliente = request.user
+    producto = Producto.objects.get(pk=ProductID)
 
-    producto = Producto.objects.get(pk=ProductID)    
-    carrito = Carrito.objects.get(UserCart=cliente)
-    cart_item, item_created = CartItems.objects.get_or_create(Cart=carrito.CartID, Item=producto)
+    carrito = Carrito.objects.filter(UserCart=cliente, Completado=False).first()
+    
+    if not carrito:
+        carrito = Carrito.objects.create(UserCart=cliente, Completado=False)
 
-    if cart_item.Cantidad > 1:
-        cart_item.Cantidad -= 1
-        cart_item.save()
-    else:
-        cart_item.delete()
+    cart_item = CartItems.objects.filter(Cart=carrito, Item=producto).first()
+
+    if cart_item:
+        if cart_item.Cantidad > 1:
+            cart_item.Cantidad -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+
     return redirect('carrito')

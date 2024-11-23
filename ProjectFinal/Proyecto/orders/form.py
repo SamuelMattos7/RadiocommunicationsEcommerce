@@ -15,7 +15,7 @@ class SoloNumerosValidator:
 class CreacionOrderForm(forms.ModelForm):
     class Meta:
         model = Orders
-        fields = ('User', 'User_email', 'Direccion', 'PrecioTotal', 'MetodoPago')
+        fields = ('User', 'User_email', 'User_region', 'Direccion', 'PrecioTotal', 'MetodoPago')
 
     def __init__(self, *args, **kwargs):
         super(CreacionOrderForm, self).__init__(*args, **kwargs)

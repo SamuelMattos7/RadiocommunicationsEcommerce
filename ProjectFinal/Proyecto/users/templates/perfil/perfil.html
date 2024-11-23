@@ -98,7 +98,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
+                                    <h6 class="mb-0">Nombre / Apellido</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     {{perfil.Nombre}}&nbsp;{{perfil.Apellido}}
@@ -126,7 +126,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Mobile</h6>
+                                    <h6 class="mb-0">Telefono</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     {{perfil.Telefono}}
@@ -135,7 +135,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Address</h6>
+                                    <h6 class="mb-0">Direccion</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     {{perfil.Direccion}}
@@ -151,7 +151,8 @@
 
                             </script>
     </body>
-    <a href="{% url 'EditarPerfil' %}">Editar</a>
+    <a href="{% url 'EditarPerfil' %}">Editar perfil</a> |
+    <a href="{%url 'logout' %}">Cerrar Sesión</a>
 </body>
 
 </html>

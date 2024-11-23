@@ -2,7 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+<style>
+  a{
+    text-decoration: none;
+  }
+</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,14 +153,14 @@
           <td>{{ A.Marca }}</td>
           <td>{{ A.Precio }}</td>
           <td>
-            <a href="{% url 'ActulizarProduct' A.ProductID %}">Actualizar</a>
-            <a href="{% url 'EliminarProduct' A.ProductID %}">Eliminar</a>
+            <a style="text-decoration: none;" href="{% url 'ActulizarProduct' A.ProductID %}">Actualizar</a> |
+            <a style="text-decoration: none;" href="{% url 'EliminarProduct' A.ProductID %}">Eliminar</a>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <br><button class="btn btn-dark"><a style="text-decoration: none;" href="{% url 'CrearProduct' %}">Agregar
+    <br><button class="btn btn-primary"><a style="text-decoration: none; color: white;" href="{% url 'CrearProduct' %}">Agregar
         Productos</a></button>
   </div>
   {%else%}

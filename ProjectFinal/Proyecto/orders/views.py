@@ -108,6 +108,7 @@ def confirmar_order(request):
     form = CreacionOrderForm({
         'User':request.user, 
         'User_email':request.user.email,
+        'User_region':request.user.perfil.Region,
         'Direccion':request.user.perfil.Direccion,
         'MetodoPago':'Paypal',
         'PrecioTotal': carrito.PrecioTotal(),

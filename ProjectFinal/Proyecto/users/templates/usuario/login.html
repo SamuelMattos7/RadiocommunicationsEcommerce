@@ -25,7 +25,7 @@
             <label for="{{ form.password.id }}">contraseña:</label>
             {{form.password}}
             <br>
-            <button type="submit">Siguiente</button>&nbsp;|&nbsp;<form method="post" action="{% url 'logout' %}">{% csrf_token %}<input class="btn btn-primary" type="submit" value="Logout"></form>
+            <button class="btn btn-primary" type="submit">Siguiente</button>&nbsp;|&nbsp; <button class="btn btn-primary"><a style="text-decoration: none; color: white;" href="{% url 'registro' %}">Registro</a></button>
         </form>
     </div>
 </div>

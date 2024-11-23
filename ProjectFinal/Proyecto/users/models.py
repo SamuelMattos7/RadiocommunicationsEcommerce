@@ -80,10 +80,31 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         return self.username
 
 class Perfil(models.Model):
+
+    Regiones = (
+        (1, "Arica y Parinacota"),
+        (2, "Tarapacá"),
+        (3, "Antofagasta"),
+        (4, "Atacama"),
+        (5, "Coquimbo"),
+        (6, "Valparaíso"),
+        (7, "Región Metropolitana de Santiago"),
+        (8, "Libertador General Bernardo O'Higgins"),
+        (9, "Maule"),
+        (10, "Ñuble"),
+        (11, "Biobío"),
+        (12, "La Araucanía"),
+        (13, "Los Ríos"),
+        (14, "Los Lagos"),
+        (15, "Aysén del General Carlos Ibáñez del Campo"),
+        (16, "Magallanes y de la Antártica Chilena")
+    )
+
     PerfilID = models.AutoField(primary_key=True, verbose_name='PerfilID')
     User = models.OneToOneField(settings.AUTH_USER_MODEL, to_field='UserID', on_delete=models.CASCADE)
     Nombre = models.CharField(verbose_name="Nombre cliente", max_length=30)
     Apellido = models.CharField(verbose_name="Apellido cliente", max_length=30)
     afiliacion = models.CharField(verbose_name='Afiliacion', max_length=60, unique=False)
     Telefono = models.CharField(verbose_name="Telefono cliente", max_length=30)
+    Region = models.CharField(verbose_name='Tipo de usuario', max_length=25, choices=Regiones, default=7, null=True)
     Direccion = models.CharField(verbose_name="Direccion cliente", max_length=30)

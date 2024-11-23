@@ -142,8 +142,8 @@
           <td>{{ A.username }}</td>
           <td>{{ A.userType }}</td>
           <td>
-            <a href="{% url 'EliminarUser' A.UserID %}">Eliminar</a>
-            <a href="{% url 'ActualizarUser' A.UserID %}">Actualizar</a>
+            <a style="text-decoration: none;" href="{% url 'EliminarUser' A.UserID %}">Eliminar</a> |
+            <a style="text-decoration: none;" href="{% url 'ActualizarUser' A.UserID %}">Actualizar</a>
           </td>
         </tr>
         {% endfor %}
