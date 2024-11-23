@@ -1,30 +1,214 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <form method="get">
-        {{ filter.form.as_p }}
-        <button type="submit">Filtrar</button>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none"
+                        href="mailto:info@company.com">reidiosolutions@gmail.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">+56982066670</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://www.facebook.com/people/ReidioSolutions/61553508162290/"
+                        target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/reidiosolutions/" target="_blank"><i
+                            class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/reidiosolutions" target="_blank"><i
+                            class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'home'%}">
+                <img src="/static/img/reidiosolutionszz.jpg" alt="Reidiosolutions" style="width: 200px; height: auto; ">
+
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home'%}">Reidiosolutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'aboutus' %}">Sobre nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'Catalogo'%}">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'contact'%}">Contactanos!</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                        data-bs-target="#templatemo_search">
+                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="{%url 'carrito'%}">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="{%url 'registro'%}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                    {% if user.userType == 'ADMINISTRADOR' %}
+                    <p><a href="{% url 'AdminPanel' %}">Admin Panel</a></p>
+                    {%endif%}
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Filter Form with Bootstrap -->
+    <form method="get" class="mb-4">
+        <div class="row">
+            <!-- Loop through the filter form fields and apply Bootstrap classes -->
+            {% for field in filter.form %}
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ field.label_tag }} <!-- Field label -->
+                        {{ field }} <!-- Field input -->
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- Submit Button with Bootstrap -->
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            </div>
+        </div>
     </form>
-    
-    <ul>
-        {% for producto in productos %}
-            <li>{{ producto.Nombre }} - {{ producto.Marca }} - {{ producto.Precio }} - {{ producto.Tipo.TipoProducto }} 
-                / <a href="{% url 'VisualizarProducto' producto.ProductID %}">link</a> 
-                {% if producto.pdf_file %}
-                    / <a href="{% url 'download_pdf' producto.ProductID %}">Download Specsheet</a>
-                {% else %}
-                    / No PDF file
-                {% endif %}
-            </li>
-        {% empty %}
-            <li>No products found.</li>
-        {% endfor %}
-    </ul>
+
+    <!-- Product List with Bootstrap -->
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0">Productos</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for producto in productos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ producto.Nombre }}</strong> - {{ producto.Marca }} - ${{ producto.Precio }} - {{ producto.Tipo.TipoProducto }}
+                    </div>
+                    <div class="btn-group">
+                        <!-- Product Detail Link -->
+                        <a href="{% url 'VisualizarProducto' producto.ProductID %}" class="btn btn-info btn-sm">Detalles</a>
+
+                        <!-- Download PDF Button -->
+                        {% if producto.pdf_file %}
+                            <a href="{% url 'download_pdf' producto.ProductID %}" class="btn btn-secondary btn-sm">Descargar PDF</a>
+                        {% else %}
+                            <button class="btn btn-secondary btn-sm" disabled>No hay PDF</button>
+                        {% endif %}
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No se encontraron productos.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Reidiosolutions</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><i class="fas fa-map-marker-alt fa-fw"></i> Calle Juan Segura 25</li>
+                        <li><i class="fa fa-phone fa-fw"></i> <a href="tel:+56982066670"
+                                class="text-decoration-none">+56982066670</a></li>
+                        <li><i class="fa fa-envelope fa-fw"></i> <a href="mailto:reidiosolutions@gmail.com"
+                                class="text-decoration-none">reidiosolutions@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Cortinas eléctricas</a></li>
+                        <li><a class="text-decoration-none" href="#">Impresiones</a></li>
+                        <li><a class="text-decoration-none" href="#">Gorras</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Más información</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="{% url 'contact' %}">Contáctanos</a></li>
+                        <li><a class="text-decoration-none" href="#">Términos y condiciones</a></li>
+                        <li><a class="text-decoration-none" href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            &copy; 2024 Reidiosolutions | Designed by Reidiosolutions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

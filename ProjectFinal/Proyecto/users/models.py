@@ -104,7 +104,7 @@ class Perfil(models.Model):
     User = models.OneToOneField(settings.AUTH_USER_MODEL, to_field='UserID', on_delete=models.CASCADE)
     Nombre = models.CharField(verbose_name="Nombre cliente", max_length=30)
     Apellido = models.CharField(verbose_name="Apellido cliente", max_length=30)
-    afiliacion = models.CharField(verbose_name='Afiliacion', max_length=60, unique=False)
+    Empresa = models.CharField(verbose_name='Empresa', max_length=60, unique=False, null=True)
     Telefono = models.CharField(verbose_name="Telefono cliente", max_length=30)
     Region = models.CharField(verbose_name='Tipo de usuario', max_length=25, choices=Regiones, default=7, null=True)
     Direccion = models.CharField(verbose_name="Direccion cliente", max_length=30)
