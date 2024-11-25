@@ -32,6 +32,7 @@ urlpatterns = [
     path('EliminarUser/<int:id>/', views.DeleteUsers, name='EliminarUser'),
     path('ActualizarUser/<int:id>/', views.UpdateUser,name='ActualizarUser'),
     path('download_orders/', views.download_orders, name='download_orders'),
+    path('PowerBiPanel/', views.Power_bi_panel, name='PowerBiPanel'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('contact/', views.contact, name='contact')
 ]
