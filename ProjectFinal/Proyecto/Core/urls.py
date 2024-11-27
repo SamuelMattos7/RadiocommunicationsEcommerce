@@ -13,5 +13,7 @@ urlpatterns = [
     path('CrearProduct/', views.CrearProduct, name='CrearProduct'),
     path('ActulizarProduct/<int:id>/', views.UpdateProducto, name='ActulizarProduct'),
     path('EliminarProduct/<int:id>/', views.DeleteProducto, name='EliminarProduct'), 
+    path('TipoProducto/', views.TipoProducto, name='TipoProducto'),
+    path('CodigoProducto/', views.CodigoProducto, name='CodigoProducto'),
     path('download_pdf/<int:product_id>/', views.download_pdf, name='download_pdf'),
 ]
