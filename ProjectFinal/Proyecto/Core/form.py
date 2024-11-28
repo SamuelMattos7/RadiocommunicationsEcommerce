@@ -1,5 +1,5 @@
 from django import forms
-from .models import Producto
+from .models import Producto, TipoProductos, CodigosProductos
 from django.core.exceptions import ValidationError
 
 class SoloNumerosValidator:
@@ -50,6 +50,37 @@ class ProductUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProductUpdateForm, self).__init__(*args, **kwargs)
+        
+        for field_name, field in self.fields.items():
+            self.fields[field_name].widget.attrs['class'] = 'form-control col-12'
+
+class TipoProductosForm(forms.ModelForm):
+
+    class Meta:
+        model = TipoProductos
+        fields = ['TipoProducto']
+        widgets = {
+            'TipoProducto': forms.Select(attrs={'class': 'form-control'})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(TipoProductosForm, self).__init__(*args, **kwargs)
+        
+        for field_name, field in self.fields.items():
+            self.fields[field_name].widget.attrs['class'] = 'form-control col-12'
+
+
+class CodigoProductosForm(forms.ModelForm):
+
+    class Meta:
+        model = CodigosProductos
+        fields = ['ProductoCodigo']
+        widgets = {
+            'Codigo': forms.Select(attrs={'class': 'form-control'})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(CodigoProductosForm, self).__init__(*args, **kwargs)
         
         for field_name, field in self.fields.items():
             self.fields[field_name].widget.attrs['class'] = 'form-control col-12'

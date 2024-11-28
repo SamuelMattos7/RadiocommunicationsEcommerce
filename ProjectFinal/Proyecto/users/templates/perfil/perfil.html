@@ -14,8 +14,6 @@
 
     <head>
         <meta charset="utf-8">
-
-
         <title>Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -82,8 +80,6 @@
             }
         </style>
     </head>
-
-    <body>
         <div class="container">
             <div class="main-body">
 
@@ -150,21 +146,28 @@
                                     {{perfil.Direccion}}
                                 </div>
                             </div>
+                            <hr>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary">
+                                    <a style="text-decoration: none; color: white;" href="{% url 'EditarPerfil' %}">Editar perfil</a>
+                                </button>
+                                &nbsp; / &nbsp;
+                                <form method="POST" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary" type="submit">Logout</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
 
-                            <script data-cfasync="false"
-                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-                            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-                            <script
-                                src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-                            <script type="text/javascript">
-
-                            </script>
-    </body>
-    <button class="btn btn-primary"><a href="{% url 'EditarPerfil' %}">Editar perfil</a></button> |
-    <form method="POST" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Logout</button>
-    </form>
+        </script>
 </body>
 
 </html>

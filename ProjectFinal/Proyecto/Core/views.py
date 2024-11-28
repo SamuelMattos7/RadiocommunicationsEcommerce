@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from Core.models import Producto
 from django.http import HttpResponseRedirect
-from .form import ProductUpdateForm, ProductCreateForm
+from .form import ProductUpdateForm, ProductCreateForm, TipoProductosForm, CodigoProductosForm
 from django.urls import reverse 
 from django.shortcuts import redirect
 from cart.models import Carrito, CartItems
@@ -73,6 +73,36 @@ def DeleteProducto(request, id):
     elif request.method == 'POST':
         instance.delete()
         return redirect('AdminProductList')
+
+def TipoProducto(request):
+    
+    form = TipoProductosForm()
+
+    if request.method == 'POST':
+        form = TipoProductosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('AdminProductList'))
+    else:
+        print(form.errors)
+        form = TipoProductosForm
+
+    return render(request, 'Cods&Types/TipoProducto.html', {'form': form})   
+
+def CodigoProducto(request):
+
+    form = CodigoProductosForm()
+
+    if request.method == 'POST':
+        form = CodigoProductosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('AdminProductList'))
+    else:
+        print(form.errors)
+        form = CodigoProductosForm
+
+    return render(request, 'Cods&Types/CodigoProducto.html', {'form': form})  
 
 def Tienda(request):
     productos = Producto.objects.all()

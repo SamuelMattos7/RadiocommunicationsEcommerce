@@ -136,7 +136,7 @@ class PerfilCreacionForm(forms.ModelForm):
         'Apellido': forms.TextInput(attrs={'class': 'form-control'}),
         'Empresa': forms.TextInput(attrs={'class': 'form-control'}),
         'Telefono': forms.TextInput(attrs={'class': 'form-control'}),
-        'Region': forms.TextInput(attrs={'class': 'form-control'}),
+        'Region': forms.Select(attrs={'class': 'form-control'}),
         'Direccion': forms.TextInput(attrs={'class': 'form-control'}),
     }
 
@@ -154,12 +154,13 @@ class PerfilEditarForm(forms.ModelForm):
     
     class Meta:
         model = Perfil
-        fields = ['Nombre', 'Apellido', 'Empresa', 'Telefono', 'Direccion']
+        fields = ['Nombre', 'Apellido', 'Empresa', 'Telefono', 'Region','Direccion']
         labels = {
             'Nombre': 'Nombre',
             'Apellido': 'Apellidos',
             'Empresa': 'Empresa',
             'Telefono': 'Número de Teléfono',
+            'Region': 'Region',
             'Direccion': 'Dirección',
         }
 
@@ -168,7 +169,7 @@ class PerfilEditarForm(forms.ModelForm):
         'Apellido': forms.TextInput(attrs={'class': 'form-control'}),
         'Empresa': forms.TextInput(attrs={'class': 'form-control'}),
         'Telefono': forms.TextInput(attrs={'class': 'form-control'}),
-        'Region': forms.TextInput(attrs={'class': 'form-control'}),
+        'Region': forms.Select(attrs={'class': 'form-control'}),
         'Direccion': forms.TextInput(attrs={'class': 'form-control'}),
     }
 

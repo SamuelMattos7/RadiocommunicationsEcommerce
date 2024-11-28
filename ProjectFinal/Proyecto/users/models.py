@@ -106,5 +106,5 @@ class Perfil(models.Model):
     Apellido = models.CharField(verbose_name="Apellido cliente", max_length=30)
     Empresa = models.CharField(verbose_name='Empresa', max_length=60, unique=False, null=True)
     Telefono = models.CharField(verbose_name="Telefono cliente", max_length=30)
-    Region = models.CharField(verbose_name='Region', max_length=25, choices=Regiones, default=7, null=True)
+    Region = models.IntegerField(verbose_name='Region', choices=Regiones, default=7, null=True)
     Direccion = models.CharField(verbose_name="Direccion cliente", max_length=30)

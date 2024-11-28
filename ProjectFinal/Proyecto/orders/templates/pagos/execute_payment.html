@@ -11,7 +11,11 @@
     <div class="container">
         <h2 class="text-center">Pago Exitoso!</h2>
         <p class="text-center">Gracias por su pago! Su orden también ha sido creada.</p>
-        <button class="btn btn-primary"><a href="{% url 'home'%}">Volver a inicio</a></button>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary">
+                <a style="text-decoration: none; color: white;" href="{% url 'home' %}">Volver a inicio</a>
+            </button>
+        </div>
     </div>
 </body>
 </html>

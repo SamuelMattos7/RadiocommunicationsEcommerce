@@ -80,7 +80,7 @@ def Activacion_Cuenta(request, uidb64, token):
         user.is_active =True
         user.save()
         login(request, user)
-        return redirect('users/login')
+        return redirect('CrearPerfil')
     else:
         return render(request, 'Activacion_Cuenta_Invalida.html')
 
@@ -145,7 +145,7 @@ def CrearPerfil(request):
             perfil = form.save(commit=False)
             perfil.User = request.user
             perfil.save()
-            return redirect('users')
+            return redirect('perfil')
         else:
             print(form.errors)
             form = PerfilCreacionForm()

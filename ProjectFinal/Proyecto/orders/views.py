@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from cart.models import Carrito
 from orders.form import CreacionOrderForm
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.urls import reverse 
 import paypalrestsdk
 from django.db import transaction
@@ -101,44 +101,64 @@ def cancel_payment(request):
     return render(request, 'pagos/cancel_payment.html')
 
 def confirmar_order(request):
+
     carrito = Carrito.objects.get(UserCart=request.user, Completado=False)
     items = carrito.Carrito.all()
     print(items)
 
     form = CreacionOrderForm({
-        'User':request.user, 
-        'User_email':request.user.email,
-        'User_region':request.user.perfil.Region,
-        'Direccion':request.user.perfil.Direccion,
-        'MetodoPago':'Paypal',
+        'User': request.user, 
+        'User_email': request.user.email,
+        'User_region': request.user.perfil.Region,
+        'Direccion': request.user.perfil.Direccion,
+        'MetodoPago': 'Paypal',
         'PrecioTotal': carrito.PrecioTotal(),
     })
 
     if form.is_valid():
         with transaction.atomic():
+
             order = form.save(commit=False)
             order.save()
+
             carrito.Completado = True
             carrito.save()
+
             for cart_item in items:
+                producto = cart_item.Item  
+
+                if producto.Cantidad >= cart_item.Cantidad:
+                    producto.Cantidad -= cart_item.Cantidad
+                    producto.save()
+                else:
+                    return HttpResponse(
+                        f"No hay suficiente stock para {producto.Nombre}. "
+                        f"Cantidad disponible: {producto.Cantidad}.",
+                        status=400
+                    )
+
                 order.Items.add(cart_item)
+
             print('Orden Creada')
 
-            subject = 'Creacion de pedido'
-            message = f'Querido {request.user.username}, \n\nTu pedido se a realizado correctamente. \n\nDetalles de pedido:'
+            subject = 'Creación de pedido'
+            message = (
+                f"Querido {request.user.username},\n\n"
+                f"Tu pedido se ha realizado correctamente.\n\n"
+                f"Detalles del pedido:\n"
+            )
             for item in items:
-                message+= f'{item.Item.Nombre} - Cantidad: {item.Cantidad} - Precio: {item.Item.Precio}\n'
-            message+= f'n\Precio Total: ${carrito.PrecioTotal()}\n\nGracias por su compra!'
-            recipient = request.user.email
+                message += f"{item.Item.Nombre} - Cantidad: {item.Cantidad} - Precio: {item.Item.Precio}\n"
+            message += f"\nPrecio Total: ${carrito.PrecioTotal()}\n\n¡Gracias por tu compra!"
 
             send_mail(
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,
-                [recipient],
+                [request.user.email],
                 fail_silently=False,
             )
     else:
-        print(form.errors)
+        return render(request, 'pagos/execute_payment.html', {'error': form.errors})
 
-    return render(request, 'pagos/execute_payment.html', {'error': 'Pago y creacion de su orden realizados exitosamente'})
+    return render(request, 'pagos/execute_payment.html', {'error': 'Pago y creación de su orden realizados exitosamente'})
