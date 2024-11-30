@@ -204,13 +204,24 @@ def download_orders(request):
     if request.method == 'POST':
         orders = Orders.objects.all()
         order_data = []
+        order_items_data = []
 
         for order in orders:
             cart_items = order.Items.all()
             items_detail = []
 
             for item in cart_items:
-                items_detail.append(f"{item.Item.Nombre} (Quantity: {item.Cantidad})")
+                order_items_data.append({
+                    'OrderID': order.OrderID,
+                    'Nombre_Producto': item.Item.Nombre,
+                    'Tipo_Producto': item.Item.Tipo.TipoProducto,
+                    'Precio': item.Item.Precio,
+                    'Cantidad': item.Cantidad,
+                    'FechaCompra': order.FechaCompra.strftime('%Y-%m-%d %H:%M:%S'),
+                    'region_User': order.User_region
+                })
+
+                items_detail.append(f"{item.Item.Nombre} (Tipo: {item.Item.Tipo.TipoProducto}, Precio: {item.Item.Precio}, Cantidad: {item.Cantidad})")
 
             items_string = "; ".join(items_detail)
 
@@ -226,12 +237,25 @@ def download_orders(request):
                 'FechaCompra': order.FechaCompra.strftime('%Y-%m-%d %H:%M:%S')
             })
 
-        df = pd.DataFrame(order_data)
+        df_orders = pd.DataFrame(order_data)
+        
+        df_order_items = pd.DataFrame(order_items_data)
 
-        response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename=orders.csv'
+        from io import BytesIO
+        import zipfile
 
-        df.to_csv(path_or_buf=response, sep=';', index=False)
+        zip_buffer = BytesIO()
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+            
+            orders_csv = df_orders.to_csv(sep=';', index=False)
+            zip_file.writestr('orders.csv', orders_csv)
+            
+            order_items_csv = df_order_items.to_csv(sep=';', index=False)
+            zip_file.writestr('order_items.csv', order_items_csv)
+
+        zip_buffer.seek(0)
+        response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
+        response['Content-Disposition'] = 'attachment; filename=orders_export.zip'
         
         return response
 

@@ -123,6 +123,8 @@
 <br>
 <br>
 <br>    
+{% if user.is_authenticated %}
+{% if user.userType == 'ADMINISTRADOR' %} 
     <div class="container">
         <div class="d-flex justify-content-center">
             <iframe title="Inteligencia_Negocio_Reidiosolutions_PBI" width="1024" height="1060"
@@ -130,6 +132,12 @@
                 frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %}
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %}
 </body>
 
 </html>

@@ -45,6 +45,8 @@
     </style>
 </head>
 <body>
+{% if user.is_authenticated %}
+{% if user.userType == 'ADMINISTRADOR' %}
     <div class="container">
         <h1>Download Orders</h1>
         <p style="text-align: center;">Presione el boton para descargar el archivo cvs para el analisis de datos</p>
@@ -53,5 +55,11 @@
             <button type="submit" class="btn-download">Download CSV</button>
         </form>
     </div>
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %}
+{%else%}
+<h1>Usted no esta permitido aqui</h1>
+{% endif %}
 </body>
 </html>
