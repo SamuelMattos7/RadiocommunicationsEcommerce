@@ -129,11 +129,11 @@
         <tr>
           <th>ID</th>
           <th>user</th>
-          <th>nombre y apellido</th>
+          <th>correo</th>
           <th>telefono</th>
           <th>items</th>
-          <th>metodo pago</th>
           <th>precio total</th>
+          <th>Fecha compra</th>
         </tr>
       </thead>
       <tbody>
@@ -141,15 +141,15 @@
         <tr>
           <td>{{ A.OrderID }}</td>
           <td>{{ A.User }}</td>
-          <td>{{ A.Nombre }}|{{ A.Apellido }}</td>
-          <td>{{A.Telefono}}</td>
+          <td>{{ A.User_email }}</td>
+          <td>{{A.User_region}}</td>
           <td>
             {% for item in A.Items.all %}
             {{ item.Item.Nombre }}
             {% endfor %}
           </td>
-          <td>{{ A.MetodoPago }}</td>
           <td>{{A.PrecioTotal}}</td>
+          <td>{{ A.FechaCompra }}</td>
         </tr>
         {% endfor %}
       </tbody>

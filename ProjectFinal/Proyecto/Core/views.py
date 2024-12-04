@@ -12,6 +12,7 @@ from django_filters.views import FilterView
 from .models import Producto
 from .filters import ProductFilter
 from django.http import Http404, FileResponse
+from django.contrib import messages
 import os
 
 # Create your views here.
@@ -134,6 +135,8 @@ def Add_Carrito(request, ProductID):
         cart_item.Cantidad = 1
 
     cart_item.save()
+
+    messages.success(request, "Producto añadido al carrito")
 
     return redirect('Catalogo')
 

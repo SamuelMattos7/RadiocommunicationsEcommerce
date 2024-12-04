@@ -10,6 +10,7 @@
 <body>
 {% if user.is_authenticated %}
 {% if user.userType == 'ADMINISTRADOR' %}
+<div class="container mt-5 p-5">
     <div class="card">
         <div class="card-body">
             <div class="container mt-3 ml-3 p-5">
@@ -25,6 +26,7 @@
             </div>
         </div>
     </div>
+</div>
 {%else%}
 <h1>Usted no esta permitido aqui</h1>
 {% endif %} 

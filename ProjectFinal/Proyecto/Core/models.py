@@ -28,9 +28,9 @@ class CodigosProductos(models.Model):
         ('M5e', '5000e'),
         ('M8', 'DGM8000'),
         ('M5', 'DEM500'),
-        ('APX', 'APX0'),
-        ('APX', 'APX2'),
-        ('APX', 'APX1'),
+        ('APX0', 'APX0'),
+        ('APX2', 'APX2'),
+        ('APX1', 'APX1'),
         
     ] 
     
@@ -58,9 +58,9 @@ class Producto(models.Model):
         ('M5e', '5000e'),
         ('M8', 'DGM8000'),
         ('M5', 'DEM500'),
-        ('APX0', 'APX'),
-        ('APX2', 'APX'),
-        ('APX1', 'APX'),
+        ('APX0', 'APX0'),
+        ('APX2', 'APX2'),
+        ('APX1', 'APX1'),
         
     ] 
 

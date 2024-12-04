@@ -10,18 +10,20 @@
 <body>
 {% if user.is_authenticated %}
 {% if user.userType == 'ADMINISTRADOR' %}
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <div class="container mt-3 ml-3 p-5">
-                <div class="form-group">
-                    <h4>AGREGAR CODIGO PRODUCTO</h4>
-                    <hr>
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <button class="btn btn-primary" type="submit">Agregar</button>
-                    </form>
+<div class="container mt-5 p-5">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="container mt-3 ml-3 p-5">
+                    <div class="form-group">
+                        <h4>AGREGAR CODIGO PRODUCTO</h4>
+                        <hr>
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button class="btn btn-primary" type="submit">Agregar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
