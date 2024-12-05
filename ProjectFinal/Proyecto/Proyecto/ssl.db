@@ -1,0 +1,155 @@
+--- 
+files: 
+  certificate: 
+    _wildcard__reidiosolutions_cl_a222d_d66d9_1724016669_66b1fc9ce9cede3348558ddc7229dbb7: 
+      created: '1716244270'
+      domains: 
+        - "*.reidiosolutions.cl"
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Cert for “reidiosolutions.cl” 1716244270.0
+      id: _wildcard__reidiosolutions_cl_a222d_d66d9_1724016669_66b1fc9ce9cede3348558ddc7229dbb7
+      is_self_signed: 0
+      issuer.commonName: R3
+      issuer.organizationName: Let's Encrypt
+      key_algorithm: rsaEncryption
+      modulus: a222da76570bb9924aec1a57f133febcc6db069a1b0c7315a5fd4741653aaf7dc7f3860b2cfab2659e2161a99650e81196413f001814fa31d5a1a70257900f3a24c73e1a7d495803ccf8ad166d6362507cfca07078c3ef57a0e31260d4f1f246d69e60270fa90bfc66b3063df0f83bcfe3765c5179d0323f39645a7c857d4810f9a4bacfa28f42870be2561ce19e2ff08dc0d84232e11f33eebd9061f77a8472ea5d249e105d1e9e7c12922abebc0276f6dc6f80b5013b6f0f035eeca2f724b72a82c705894aa9f29c2f320a3e3711d14008ca83bb869ccddacc248f6f4f23f91ba61fd658d8bd02ed217de2a0a425ebf1e50a0e86c31b76934cf35d81ad66d9
+      modulus_length: 2048
+      not_after: '1724016669'
+      not_before: '1716240670'
+      serial: 04ee5852b456f45291be2594ad6f491fd963
+      signature_algorithm: sha256WithRSAEncryption
+      subject.commonName: "*.reidiosolutions.cl"
+      validation_type: dv
+    _wildcard__reidiosolutions_cl_a62c1_68177_1729283691_069acbb0b1790b54833dab855e563d62: 
+      created: '1721511293'
+      domains: 
+        - "*.reidiosolutions.cl"
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Cert for “reidiosolutions.cl” 1721511293.0
+      id: _wildcard__reidiosolutions_cl_a62c1_68177_1729283691_069acbb0b1790b54833dab855e563d62
+      is_self_signed: 0
+      issuer.commonName: R10
+      issuer.organizationName: Let's Encrypt
+      key_algorithm: rsaEncryption
+      modulus: a62c12afd56ee4aab0fcb73ea4677606fb923cfebe681a07a8162b9ad736230927184badb8fbf12d6543d6566ef41bb53025ad182f99f7a66b00d03b8a929e1ee2f053ed3d5714819f1c7454b9871997e43a408c41069e99a19d211732cf34a42c31aad021f3764de596ce9ef707bcbc2bf7504af4fdc0899fec9783d2bf29e5af860d03abdc3de8888c177cd096930cb84f537dd2a7717f0cdac2f6736bcf7caddcc37c3787c52dd2a3b80d0b40a815e24172b045d8394643bc572631c822ca88345f19f1b07eee427978bb0811bebdaa23d6071c93688fffc2d6fad292b936eaf420307ce7c313fce24ad4d9a1d8d8673fac3209560cfadc61313130d68177
+      modulus_length: 2048
+      not_after: '1729283691'
+      not_before: '1721507692'
+      serial: 04da6168c9b13197e0bd8061310d2994b46f
+      signature_algorithm: sha256WithRSAEncryption
+      subject.commonName: "*.reidiosolutions.cl"
+      validation_type: dv
+    _wildcard__reidiosolutions_cl_ce77a_cf589_1739821068_9f2cd38df356eae90164b7b3f4e4881f: 
+      created: '1732048580'
+      domains: 
+        - "*.reidiosolutions.cl"
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Cert for “reidiosolutions.cl” 1732048580.0
+      id: _wildcard__reidiosolutions_cl_ce77a_cf589_1739821068_9f2cd38df356eae90164b7b3f4e4881f
+      is_self_signed: 0
+      issuer.commonName: R11
+      issuer.organizationName: Let's Encrypt
+      key_algorithm: rsaEncryption
+      modulus: ce77a557282b36b599dc2d27a481338e2903e5bdcde301d150aa3ddb7eb123b2c1052f5254fdd7a54cc358e8a9b086c5230994a6cd180b1b52689192622f6cebf29ef539c1a67d21c405200bbf3b610ee519614758c83ae3bddf340efb2f996696393e69ab51a2d3f6c2a21cf1fda6514920ac5c598fe046c644bc6da85b6a7ff3948549699d1b2163daf0bb4350268d90d6b50cc65a9c996c348dbe48d3818e6494d940fee4fa65f82057d54c79eac51d5eb427722267a7dda872b7bc7d6859f77ba46e174286a091b926eee17bfbdda6ccccc4e591f73fb867266e6e55d4b6119d07ad97e24d1182fcd73e8c64687a074330f07701c69dd9709f16ebecf589
+      modulus_length: 2048
+      not_after: '1739821068'
+      not_before: '1732045069'
+      serial: 0386e22fd3bdacded3c72e168a554c767f2c
+      signature_algorithm: sha256WithRSAEncryption
+      subject.commonName: "*.reidiosolutions.cl"
+      validation_type: dv
+    _wildcard__reidiosolutions_cl_efa07_cfef1_1734553961_8d323a4c573aa5a1566e8afe75633bb5: 
+      created: '1726781473'
+      domains: 
+        - "*.reidiosolutions.cl"
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Cert for “reidiosolutions.cl”
+      id: _wildcard__reidiosolutions_cl_efa07_cfef1_1734553961_8d323a4c573aa5a1566e8afe75633bb5
+      is_self_signed: 0
+      issuer.commonName: R10
+      issuer.organizationName: Let's Encrypt
+      key_algorithm: rsaEncryption
+      modulus: efa078da5bd688fdfb58a05efb4c660f99b9713c101cf0cc7ea70d1c954d057719edc9c96127bdb9ff1db3003e54af3df18526e0dadbf84d3707359f21bc83405d44ac4a6c66027f7c9ecfa1a5da36332b2e8f272a33dbcecf74aee455a003269028b429355a2d87a39a8e281572de114136e4fefcdf5a9cc403657be138ebe79440d4752cb47515af638432baa08cc7005c19b894dd34c7387e02942eef2ad8155fce8ade553b9b5d2ba5de2a2d8d47142a8e7f7e0be1c460ba418121a470febd8059537467c65cda033b8ef29d9e91d81f9897597b755eda0fba1c5a95ab170667e0beb4feea8fa10a22317cc2cbeb29a469c0aa94f75be0126bc2100cfef1
+      modulus_length: 2048
+      not_after: '1734553961'
+      not_before: '1726777962'
+      serial: 04de7dc77065f352a612ec66aef451d14ecd
+      signature_algorithm: sha256WithRSAEncryption
+      subject.commonName: "*.reidiosolutions.cl"
+      validation_type: dv
+  key: 
+    a222d_d66d9_5116d10b85aac1425c301a9458551445: 
+      created: '1716244270'
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Key for “reidiosolutions.cl” 1716244270.0
+      id: a222d_d66d9_5116d10b85aac1425c301a9458551445
+      key_algorithm: rsaEncryption
+      modulus: a222da76570bb9924aec1a57f133febcc6db069a1b0c7315a5fd4741653aaf7dc7f3860b2cfab2659e2161a99650e81196413f001814fa31d5a1a70257900f3a24c73e1a7d495803ccf8ad166d6362507cfca07078c3ef57a0e31260d4f1f246d69e60270fa90bfc66b3063df0f83bcfe3765c5179d0323f39645a7c857d4810f9a4bacfa28f42870be2561ce19e2ff08dc0d84232e11f33eebd9061f77a8472ea5d249e105d1e9e7c12922abebc0276f6dc6f80b5013b6f0f035eeca2f724b72a82c705894aa9f29c2f320a3e3711d14008ca83bb869ccddacc248f6f4f23f91ba61fd658d8bd02ed217de2a0a425ebf1e50a0e86c31b76934cf35d81ad66d9
+      modulus_length: 2048
+    a62c1_68177_5b87087056767d2870305bc5b99dde84: 
+      created: '1721511293'
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Key for “reidiosolutions.cl” 1721511293.0
+      id: a62c1_68177_5b87087056767d2870305bc5b99dde84
+      key_algorithm: rsaEncryption
+      modulus: a62c12afd56ee4aab0fcb73ea4677606fb923cfebe681a07a8162b9ad736230927184badb8fbf12d6543d6566ef41bb53025ad182f99f7a66b00d03b8a929e1ee2f053ed3d5714819f1c7454b9871997e43a408c41069e99a19d211732cf34a42c31aad021f3764de596ce9ef707bcbc2bf7504af4fdc0899fec9783d2bf29e5af860d03abdc3de8888c177cd096930cb84f537dd2a7717f0cdac2f6736bcf7caddcc37c3787c52dd2a3b80d0b40a815e24172b045d8394643bc572631c822ca88345f19f1b07eee427978bb0811bebdaa23d6071c93688fffc2d6fad292b936eaf420307ce7c313fce24ad4d9a1d8d8673fac3209560cfadc61313130d68177
+      modulus_length: 2048
+    ce77a_cf589_e3edcd2c9659c76757723dcb734a8ec1: 
+      created: '1732048580'
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Key for “reidiosolutions.cl” 1732048580.0
+      id: ce77a_cf589_e3edcd2c9659c76757723dcb734a8ec1
+      key_algorithm: rsaEncryption
+      modulus: ce77a557282b36b599dc2d27a481338e2903e5bdcde301d150aa3ddb7eb123b2c1052f5254fdd7a54cc358e8a9b086c5230994a6cd180b1b52689192622f6cebf29ef539c1a67d21c405200bbf3b610ee519614758c83ae3bddf340efb2f996696393e69ab51a2d3f6c2a21cf1fda6514920ac5c598fe046c644bc6da85b6a7ff3948549699d1b2163daf0bb4350268d90d6b50cc65a9c996c348dbe48d3818e6494d940fee4fa65f82057d54c79eac51d5eb427722267a7dda872b7bc7d6859f77ba46e174286a091b926eee17bfbdda6ccccc4e591f73fb867266e6e55d4b6119d07ad97e24d1182fcd73e8c64687a074330f07701c69dd9709f16ebecf589
+      modulus_length: 2048
+    efa07_cfef1_4f06fcdb120557d46e6e88072ae5b5b7: 
+      created: '1726781473'
+      ecdsa_curve_name: ~
+      ecdsa_public: ~
+      friendly_name: Key for “reidiosolutions.cl”
+      id: efa07_cfef1_4f06fcdb120557d46e6e88072ae5b5b7
+      key_algorithm: rsaEncryption
+      modulus: efa078da5bd688fdfb58a05efb4c660f99b9713c101cf0cc7ea70d1c954d057719edc9c96127bdb9ff1db3003e54af3df18526e0dadbf84d3707359f21bc83405d44ac4a6c66027f7c9ecfa1a5da36332b2e8f272a33dbcecf74aee455a003269028b429355a2d87a39a8e281572de114136e4fefcdf5a9cc403657be138ebe79440d4752cb47515af638432baa08cc7005c19b894dd34c7387e02942eef2ad8155fce8ade553b9b5d2ba5de2a2d8d47142a8e7f7e0be1c460ba418121a470febd8059537467c65cda033b8ef29d9e91d81f9897597b755eda0fba1c5a95ab170667e0beb4feea8fa10a22317cc2cbeb29a469c0aa94f75be0126bc2100cfef1
+      modulus_length: 2048
+indexes: 
+  certificate: 
+    modulus: 
+      a222da76570bb9924aec1a57f133febcc6db069a1b0c7315a5fd4741653aaf7dc7f3860b2cfab2659e2161a99650e81196413f001814fa31d5a1a70257900f3a24c73e1a7d495803ccf8ad166d6362507cfca07078c3ef57a0e31260d4f1f246d69e60270fa90bfc66b3063df0f83bcfe3765c5179d0323f39645a7c857d4810f9a4bacfa28f42870be2561ce19e2ff08dc0d84232e11f33eebd9061f77a8472ea5d249e105d1e9e7c12922abebc0276f6dc6f80b5013b6f0f035eeca2f724b72a82c705894aa9f29c2f320a3e3711d14008ca83bb869ccddacc248f6f4f23f91ba61fd658d8bd02ed217de2a0a425ebf1e50a0e86c31b76934cf35d81ad66d9: 
+        _wildcard__reidiosolutions_cl_a222d_d66d9_1724016669_66b1fc9ce9cede3348558ddc7229dbb7: ~
+      a62c12afd56ee4aab0fcb73ea4677606fb923cfebe681a07a8162b9ad736230927184badb8fbf12d6543d6566ef41bb53025ad182f99f7a66b00d03b8a929e1ee2f053ed3d5714819f1c7454b9871997e43a408c41069e99a19d211732cf34a42c31aad021f3764de596ce9ef707bcbc2bf7504af4fdc0899fec9783d2bf29e5af860d03abdc3de8888c177cd096930cb84f537dd2a7717f0cdac2f6736bcf7caddcc37c3787c52dd2a3b80d0b40a815e24172b045d8394643bc572631c822ca88345f19f1b07eee427978bb0811bebdaa23d6071c93688fffc2d6fad292b936eaf420307ce7c313fce24ad4d9a1d8d8673fac3209560cfadc61313130d68177: 
+        _wildcard__reidiosolutions_cl_a62c1_68177_1729283691_069acbb0b1790b54833dab855e563d62: ~
+      ce77a557282b36b599dc2d27a481338e2903e5bdcde301d150aa3ddb7eb123b2c1052f5254fdd7a54cc358e8a9b086c5230994a6cd180b1b52689192622f6cebf29ef539c1a67d21c405200bbf3b610ee519614758c83ae3bddf340efb2f996696393e69ab51a2d3f6c2a21cf1fda6514920ac5c598fe046c644bc6da85b6a7ff3948549699d1b2163daf0bb4350268d90d6b50cc65a9c996c348dbe48d3818e6494d940fee4fa65f82057d54c79eac51d5eb427722267a7dda872b7bc7d6859f77ba46e174286a091b926eee17bfbdda6ccccc4e591f73fb867266e6e55d4b6119d07ad97e24d1182fcd73e8c64687a074330f07701c69dd9709f16ebecf589: 
+        _wildcard__reidiosolutions_cl_ce77a_cf589_1739821068_9f2cd38df356eae90164b7b3f4e4881f: ~
+      efa078da5bd688fdfb58a05efb4c660f99b9713c101cf0cc7ea70d1c954d057719edc9c96127bdb9ff1db3003e54af3df18526e0dadbf84d3707359f21bc83405d44ac4a6c66027f7c9ecfa1a5da36332b2e8f272a33dbcecf74aee455a003269028b429355a2d87a39a8e281572de114136e4fefcdf5a9cc403657be138ebe79440d4752cb47515af638432baa08cc7005c19b894dd34c7387e02942eef2ad8155fce8ade553b9b5d2ba5de2a2d8d47142a8e7f7e0be1c460ba418121a470febd8059537467c65cda033b8ef29d9e91d81f9897597b755eda0fba1c5a95ab170667e0beb4feea8fa10a22317cc2cbeb29a469c0aa94f75be0126bc2100cfef1: 
+        _wildcard__reidiosolutions_cl_efa07_cfef1_1734553961_8d323a4c573aa5a1566e8afe75633bb5: ~
+    subject.commonName: 
+      "*.reidiosolutions.cl": 
+        _wildcard__reidiosolutions_cl_a222d_d66d9_1724016669_66b1fc9ce9cede3348558ddc7229dbb7: ~
+        _wildcard__reidiosolutions_cl_a62c1_68177_1729283691_069acbb0b1790b54833dab855e563d62: ~
+        _wildcard__reidiosolutions_cl_ce77a_cf589_1739821068_9f2cd38df356eae90164b7b3f4e4881f: ~
+        _wildcard__reidiosolutions_cl_efa07_cfef1_1734553961_8d323a4c573aa5a1566e8afe75633bb5: ~
+uniques: 
+  certificate: 
+    friendly_name: 
+      Cert for “reidiosolutions.cl”: _wildcard__reidiosolutions_cl_efa07_cfef1_1734553961_8d323a4c573aa5a1566e8afe75633bb5
+      Cert for “reidiosolutions.cl” 1716244270.0: _wildcard__reidiosolutions_cl_a222d_d66d9_1724016669_66b1fc9ce9cede3348558ddc7229dbb7
+      Cert for “reidiosolutions.cl” 1721511293.0: _wildcard__reidiosolutions_cl_a62c1_68177_1729283691_069acbb0b1790b54833dab855e563d62
+      Cert for “reidiosolutions.cl” 1732048580.0: _wildcard__reidiosolutions_cl_ce77a_cf589_1739821068_9f2cd38df356eae90164b7b3f4e4881f
+  key: 
+    friendly_name: 
+      Key for “reidiosolutions.cl”: efa07_cfef1_4f06fcdb120557d46e6e88072ae5b5b7
+      Key for “reidiosolutions.cl” 1716244270.0: a222d_d66d9_5116d10b85aac1425c301a9458551445
+      Key for “reidiosolutions.cl” 1721511293.0: a62c1_68177_5b87087056767d2870305bc5b99dde84
+      Key for “reidiosolutions.cl” 1732048580.0: ce77a_cf589_e3edcd2c9659c76757723dcb734a8ec1
+    modulus:ecdsa_curve_name:ecdsa_public: 
+      a222da76570bb9924aec1a57f133febcc6db069a1b0c7315a5fd4741653aaf7dc7f3860b2cfab2659e2161a99650e81196413f001814fa31d5a1a70257900f3a24c73e1a7d495803ccf8ad166d6362507cfca07078c3ef57a0e31260d4f1f246d69e60270fa90bfc66b3063df0f83bcfe3765c5179d0323f39645a7c857d4810f9a4bacfa28f42870be2561ce19e2ff08dc0d84232e11f33eebd9061f77a8472ea5d249e105d1e9e7c12922abebc0276f6dc6f80b5013b6f0f035eeca2f724b72a82c705894aa9f29c2f320a3e3711d14008ca83bb869ccddacc248f6f4f23f91ba61fd658d8bd02ed217de2a0a425ebf1e50a0e86c31b76934cf35d81ad66d9: a222d_d66d9_5116d10b85aac1425c301a9458551445
+      a62c12afd56ee4aab0fcb73ea4677606fb923cfebe681a07a8162b9ad736230927184badb8fbf12d6543d6566ef41bb53025ad182f99f7a66b00d03b8a929e1ee2f053ed3d5714819f1c7454b9871997e43a408c41069e99a19d211732cf34a42c31aad021f3764de596ce9ef707bcbc2bf7504af4fdc0899fec9783d2bf29e5af860d03abdc3de8888c177cd096930cb84f537dd2a7717f0cdac2f6736bcf7caddcc37c3787c52dd2a3b80d0b40a815e24172b045d8394643bc572631c822ca88345f19f1b07eee427978bb0811bebdaa23d6071c93688fffc2d6fad292b936eaf420307ce7c313fce24ad4d9a1d8d8673fac3209560cfadc61313130d68177: a62c1_68177_5b87087056767d2870305bc5b99dde84
+      ce77a557282b36b599dc2d27a481338e2903e5bdcde301d150aa3ddb7eb123b2c1052f5254fdd7a54cc358e8a9b086c5230994a6cd180b1b52689192622f6cebf29ef539c1a67d21c405200bbf3b610ee519614758c83ae3bddf340efb2f996696393e69ab51a2d3f6c2a21cf1fda6514920ac5c598fe046c644bc6da85b6a7ff3948549699d1b2163daf0bb4350268d90d6b50cc65a9c996c348dbe48d3818e6494d940fee4fa65f82057d54c79eac51d5eb427722267a7dda872b7bc7d6859f77ba46e174286a091b926eee17bfbdda6ccccc4e591f73fb867266e6e55d4b6119d07ad97e24d1182fcd73e8c64687a074330f07701c69dd9709f16ebecf589: ce77a_cf589_e3edcd2c9659c76757723dcb734a8ec1
+      efa078da5bd688fdfb58a05efb4c660f99b9713c101cf0cc7ea70d1c954d057719edc9c96127bdb9ff1db3003e54af3df18526e0dadbf84d3707359f21bc83405d44ac4a6c66027f7c9ecfa1a5da36332b2e8f272a33dbcecf74aee455a003269028b429355a2d87a39a8e281572de114136e4fefcdf5a9cc403657be138ebe79440d4752cb47515af638432baa08cc7005c19b894dd34c7387e02942eef2ad8155fce8ade553b9b5d2ba5de2a2d8d47142a8e7f7e0be1c460ba418121a470febd8059537467c65cda033b8ef29d9e91d81f9897597b755eda0fba1c5a95ab170667e0beb4feea8fa10a22317cc2cbeb29a469c0aa94f75be0126bc2100cfef1: efa07_cfef1_4f06fcdb120557d46e6e88072ae5b5b7

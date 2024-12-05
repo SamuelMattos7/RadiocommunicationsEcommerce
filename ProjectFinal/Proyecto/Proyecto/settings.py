@@ -79,10 +79,21 @@ WSGI_APPLICATION = "Proyecto.wsgi.application"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Database engine
-        'NAME': BASE_DIR / 'db.sqlite3',  # Path to SQLite database file
+        'ENGINE': 'django.db.backends.mysql',  # Motor para MySQL
+        'NAME': 'cre96513_reidiosolutions',        # Nombre de tu base de datos
+        'USER': 'cre96513_oscarcespedes',                    # Usuario de la base de datos
+        'PASSWORD': 'cespedes2k13',             # Contraseña del usuario
+        'HOST': '190.107.177.31',                  # Dirección del servidor (localhost si está en el mismo servidor)
+        'PORT': '3306',                       # Puerto (3306 es el puerto predeterminado de MySQL)
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',  # Configuración para mantener integridad en las consultas
+            'ssl': {'ca': None}
+            #'ssl': {
+             #   'ca': 'C:\Users\Sam\Documents\GitHub\ProjectoDeTitulo\ProjectFinal\Proyecto\Proyecto\ssl.db'
+            }
+        },
     }
-}
+
 
 
 
